@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ページ要約</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: system-ui, sans-serif;
+        line-height: 1.5;
+      }
+      body {
+        margin: 0;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1rem;
+        margin: 0 0 8px;
+      }
+      fieldset {
+        border: 1px solid #8884;
+        border-radius: 8px;
+        margin: 0 0 12px;
+        padding: 8px 10px;
+      }
+      legend {
+        padding: 0 4px;
+        font-size: 0.85rem;
+      }
+      label {
+        display: block;
+        margin: 4px 0;
+        font-size: 0.9rem;
+      }
+      #warning {
+        background: #f59e0b33;
+        border: 1px solid #f59e0b88;
+        border-radius: 6px;
+        padding: 8px;
+        margin-bottom: 10px;
+        font-size: 0.85rem;
+      }
+      #meta {
+        font-size: 0.8rem;
+        opacity: 0.85;
+        margin-top: 10px;
+      }
+      #summary {
+        font-size: 0.95rem;
+        word-break: break-word;
+      }
+      #warmup {
+        margin: 0 0 10px;
+        border: 1px solid #8886;
+        border-radius: 8px;
+        padding: 7px 10px;
+        cursor: pointer;
+      }
+      #warmup[disabled] {
+        opacity: 0.7;
+        cursor: wait;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ページ要約（オンデバイス）</h1>
+    <fieldset>
+      <legend>設定</legend>
+      <label>
+        要約の種類:
+        <select id="type">
+          <option value="key-points">箇条書き</option>
+          <option value="tldr">TL;DR</option>
+          <option value="teaser">ティーザー</option>
+          <option value="headline">見出し</option>
+        </select>
+      </label>
+      <label>
+        長さ:
+        <select id="length">
+          <option value="short">短い</option>
+          <option value="medium" selected>中くらい</option>
+          <option value="long">長い</option>
+        </select>
+      </label>
+      <label>
+        形式:
+        <select id="format">
+          <option value="markdown" selected>Markdown</option>
+          <option value="plain-text">プレーンテキスト</option>
+        </select>
+      </label>
+    </fieldset>
+    <button id="warmup" type="button">モデルをウォームアップ</button>
+    <div id="warning" hidden></div>
+    <div id="summary">表示する内容がありません…</div>
+    <div id="meta"></div>
+    <script src="index.js"></script>
+  </body>
+</html>

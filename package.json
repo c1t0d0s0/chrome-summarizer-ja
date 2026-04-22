@@ -1,0 +1,21 @@
+{
+  "name": "chrome-summarizer-ja",
+  "private": true,
+  "version": "1.0.0",
+  "description": "On-device page summary with Japanese translation via Chrome built-in AI",
+  "scripts": {
+    "build": "rollup -c rollup.config.mjs",
+    "package": "npm run build && node scripts/package-zip.mjs"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "@rollup/plugin-commonjs": "28.0.1",
+    "@rollup/plugin-node-resolve": "15.3.0",
+    "archiver": "^7.0.1",
+    "dompurify": "^3.4.1",
+    "marked": "14.1.4",
+    "rollup": "^4.60.2",
+    "rollup-plugin-copy": "^3.5.0"
+  }
+}
