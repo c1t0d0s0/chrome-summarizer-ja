@@ -1,6 +1,6 @@
 {
   "name": "chrome-summarizer-ja",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "manifest_version": 3,
   "description": "現在のタブのページをオンデバイスで要約し、日本語以外なら日本語へ翻訳します。",
   "minimum_chrome_version": "138",

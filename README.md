@@ -38,7 +38,7 @@
 
 ## 配布用 ZIP の作成
 
-プロジェクトルートで次を実行すると、`npm run build` のあと **`dist` の中身をルートにした ZIP**（例: `chrome-summarizer-ja-v1.0.0.zip`）が同じフォルダに生成されます。
+プロジェクトルートで次を実行すると、`npm run build` のあと **`dist` の中身をルートにした ZIP**（例: `chrome-summarizer-ja-v1.0.1.zip`）が同じフォルダに生成されます。
 
 ```bash
 npm run package

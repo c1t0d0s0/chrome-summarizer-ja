@@ -50,6 +50,21 @@
         font-size: 0.95rem;
         word-break: break-word;
       }
+      /* プレーンテキスト: DOM 上の改行を表示（既定の white-space: normal では折りたたまれる） */
+      #summary.summary--plain {
+        white-space: pre-line;
+      }
+      #summary.summary--md {
+        white-space: normal;
+      }
+      #summary.summary--md > p + p {
+        margin-top: 0.65em;
+      }
+      #summary.summary--md > ul,
+      #summary.summary--md > ol {
+        margin: 0.65em 0;
+        padding-left: 1.25rem;
+      }
       #warmup {
         margin: 0 0 10px;
         border: 1px solid #8886;
