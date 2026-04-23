@@ -4,6 +4,8 @@ import { marked } from 'marked';
 
 const MAX_MODEL_CHARS = 4000;
 const MIN_DETECTION_CONFIDENCE = 0.35;
+/** Chrome Summarizer API 必須: en / es / ja のいずれか（拡張は日本語表示のため ja） */
+const SUMMARIZER_OUTPUT_LANGUAGE = 'ja';
 
 let pageContent = '';
 
@@ -49,7 +51,7 @@ function normalizeSourceLanguage(tag) {
 }
 
 async function createSummarizer(options) {
-  const availability = await Summarizer.availability();
+  const availability = await Summarizer.availability(options);
   if (availability === 'unavailable') {
     throw new Error('Summarizer API が利用できません（Chrome のバージョン・環境を確認してください）。');
   }
@@ -106,6 +108,7 @@ async function warmupModels() {
       type: 'tldr',
       format: 'plain-text',
       length: 'short',
+      outputLanguage: SUMMARIZER_OUTPUT_LANGUAGE,
     });
     warmupSummarizer.destroy();
 
@@ -290,6 +293,7 @@ async function generateSummary(text) {
     type: summaryTypeSelect.value,
     format: summaryFormatSelect.value,
     length: summaryLengthSelect.value,
+    outputLanguage: SUMMARIZER_OUTPUT_LANGUAGE,
   };
 
   if (!('Summarizer' in self)) {
@@ -343,6 +347,8 @@ async function showSummaryFlow(content) {
 
 async function renderSummary(text) {
   const fmt = summaryFormatSelect.value;
+  summaryElement.classList.toggle('summary--plain', fmt !== 'markdown');
+  summaryElement.classList.toggle('summary--md', fmt === 'markdown');
   if (fmt === 'markdown') {
     summaryElement.innerHTML = DOMPurify.sanitize(
       marked.parse(text, {
